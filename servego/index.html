@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#060708">
+  <title>ServeGo — O profissional que você precisa, quando precisa</title>
+  <meta name="description" content="Encontre profissionais confiáveis para resolver o que precisa, quando precisa. Eletricistas, encanadores, mecânicos e mais — verificados, avaliados e próximos de você.">
+
+  <meta property="og:title" content="ServeGo — O profissional que você precisa, quando precisa">
+  <meta property="og:description" content="Orçamentos em minutos com profissionais verificados perto de você.">
+  <meta property="og:type" content="website">
+
+  <!-- Tema aplicado antes da primeira pintura (evita flash de tela branca) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("servego.theme");
+        if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+<body class="lp">
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="lp-header" id="lpHeader">
+    <div class="sg-container lp-header__inner">
+      <a href="#" id="brandSlot" aria-label="ServeGo"></a>
+      <nav class="lp-nav">
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#categorias">Categorias</a>
+        <a href="#profissionais">Para profissionais</a>
+        <a href="#confianca">Confiança</a>
+      </nav>
+      <div class="sg-spacer"></div>
+      <div class="sg-row" style="gap:8px">
+        <span id="themeSlot" style="display:flex"></span>
+        <a class="sg-btn sg-btn--ghost sg-btn--sm sg-hide-sm" href="app.html">Entrar</a>
+        <a class="sg-btn sg-btn--primary sg-btn--sm" href="app.html">Começar agora</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="lp-hero">
+    <div class="sg-container">
+      <div class="lp-hero__grid">
+        <div>
+          <span class="lp-hero__pill sg-anim">Profissionais verificados perto de você <b>NOVO</b></span>
+          <h1 class="sg-anim sg-anim-1">
+            O profissional que você precisa,
+            <span class="sg-gradient-text">quando precisa.</span>
+          </h1>
+          <p class="lp-hero__sub sg-anim sg-anim-2">
+            Encontre profissionais confiáveis para resolver o que precisa, quando precisa.
+            Descreva o problema, receba orçamentos em minutos e acompanhe o serviço do início ao fim.
+          </p>
+          <div class="lp-hero__cta sg-anim sg-anim-3">
+            <a class="sg-btn sg-btn--primary sg-btn--lg" href="app.html">
+              Encontrar um profissional <span id="icoArrow"></span>
+            </a>
+            <a class="sg-btn sg-btn--outline sg-btn--lg" href="app.html">Sou profissional</a>
+          </div>
+          <div class="lp-hero__trust sg-anim sg-anim-4">
+            <div class="lp-hero__trust-item">
+              <span class="lp-hero__trust-value">12.400+</span>
+              <span class="lp-hero__trust-label">profissionais ativos</span>
+            </div>
+            <div class="lp-hero__trust-item">
+              <span class="lp-hero__trust-value">4,9<span class="sg-brand-text">★</span></span>
+              <span class="lp-hero__trust-label">avaliação média</span>
+            </div>
+            <div class="lp-hero__trust-item">
+              <span class="lp-hero__trust-value">8 min</span>
+              <span class="lp-hero__trust-label">até o 1º orçamento</span>
+            </div>
+            <div class="lp-hero__trust-item">
+              <span class="lp-hero__trust-value">98%</span>
+              <span class="lp-hero__trust-label">serviços concluídos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Composição visual: rede de profissionais ao redor do cliente -->
+        <div class="lp-stage" aria-hidden="true">
+          <div class="lp-stage__grid"></div>
+          <div class="lp-stage__glow"></div>
+          <div class="lp-stage__ring lp-stage__ring--1"></div>
+          <div class="lp-stage__ring lp-stage__ring--2"></div>
+          <div class="lp-stage__ring lp-stage__ring--3"></div>
+          <div class="lp-stage__wave"></div>
+          <div class="lp-stage__wave lp-stage__wave--2"></div>
+          <div class="lp-stage__wave lp-stage__wave--3"></div>
+          <div class="lp-stage__center" id="stageCenter"></div>
+
+          <div class="lp-node" style="left:6%;top:21%;animation-delay:.25s">
+            <span class="lp-node__ic">⚡</span>
+            <span><span class="lp-node__name">Carlos M.</span><span class="lp-node__meta">Eletricista · 2,4 km</span></span>
+          </div>
+          <div class="lp-node" style="right:5%;top:31%;animation-delay:.45s">
+            <span class="lp-node__ic">❄️</span>
+            <span><span class="lp-node__name">Thiago N.</span><span class="lp-node__meta">Ar-condicionado · 3,7 km</span></span>
+          </div>
+          <div class="lp-node" style="left:4%;top:58%;animation-delay:.65s">
+            <span class="lp-node__ic">💧</span>
+            <span><span class="lp-node__name">Diego R.</span><span class="lp-node__meta">Encanador · 3,3 km</span></span>
+          </div>
+          <div class="lp-node" style="right:4%;top:55%;animation-delay:.85s">
+            <span class="lp-node__ic">🎨</span>
+            <span><span class="lp-node__name">Juliana C.</span><span class="lp-node__meta">Pintora · 2,9 km</span></span>
+          </div>
+
+          <div class="lp-stage__card">
+            <div class="sg-row sg-row--between" style="margin-bottom:12px">
+              <span class="sg-eyebrow">Solicitação em andamento</span>
+              <span class="sg-badge sg-badge--brand"><span class="sg-dot sg-dot--live"></span>ao vivo</span>
+            </div>
+            <div class="sg-row">
+              <span class="sg-avatar sg-avatar--lg" style="font-size:20px">⚡</span>
+              <div style="min-width:0;flex:1">
+                <div class="sg-md sg-strong sg-truncate">Tomadas da cozinha sem energia</div>
+                <div class="sg-xs sg-dim">3 orçamentos recebidos · a partir de R$ 105</div>
+              </div>
+              <div style="text-align:right">
+                <div class="sg-xs sg-faint">chega em</div>
+                <div class="sg-strong sg-brand-text">18 min</div>
+              </div>
+            </div>
+            <div class="sg-progress" style="margin-top:14px"><div class="sg-progress__fill" style="width:64%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAIXA DE CONFIANÇA ==================== -->
+  <section class="lp-strip">
+    <div class="sg-container lp-strip__inner" id="stripSlot"></div>
+  </section>
+
+  <!-- ==================== COMO FUNCIONA ==================== -->
+  <section class="lp-section" id="como-funciona">
+    <div class="sg-container">
+      <div class="lp-section__head" data-reveal>
+        <span class="sg-eyebrow">Como funciona</span>
+        <h2>Do problema à solução em quatro passos.</h2>
+        <p class="sg-lead">Sem ligações, sem indicação duvidosa, sem preço de surpresa.</p>
+      </div>
+      <div class="lp-steps">
+        <div class="lp-step is-brand" data-reveal>
+          <span class="lp-step__n">PASSO 01</span>
+          <h4>Descreva o que precisa</h4>
+          <p class="sg-md sg-dim">Escolha a categoria, conte o que aconteceu e envie fotos. Leva menos de um minuto.</p>
+        </div>
+        <div class="lp-step" data-reveal data-reveal-delay="80">
+          <span class="lp-step__n">PASSO 02</span>
+          <h4>Receba orçamentos</h4>
+          <p class="sg-md sg-dim">Profissionais verificados próximos enviam preço, prazo e tempo de chegada.</p>
+        </div>
+        <div class="lp-step" data-reveal data-reveal-delay="160">
+          <span class="lp-step__n">PASSO 03</span>
+          <h4>Compare e escolha</h4>
+          <p class="sg-md sg-dim">Veja nota, histórico, trabalhos anteriores e distância antes de decidir.</p>
+        </div>
+        <div class="lp-step" data-reveal data-reveal-delay="240">
+          <span class="lp-step__n">PASSO 04</span>
+          <h4>Acompanhe e avalie</h4>
+          <p class="sg-md sg-dim">Chat em tempo real, status do serviço passo a passo e avaliação ao final.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CATEGORIAS ==================== -->
+  <section class="lp-section lp-section--alt" id="categorias">
+    <div class="sg-container">
+      <div class="lp-section__head" data-reveal>
+        <span class="sg-eyebrow">Categorias</span>
+        <h2>Um profissional para cada problema.</h2>
+        <p class="sg-lead">Da emergência às 2h da manhã à reforma planejada com meses de antecedência.</p>
+      </div>
+      <div class="lp-cats" id="catsSlot" data-reveal></div>
+    </div>
+  </section>
+
+  <!-- ==================== CONFIANÇA ==================== -->
+  <section class="lp-section" id="confianca">
+    <div class="sg-container">
+      <div class="lp-section__head" data-reveal>
+        <span class="sg-eyebrow">Confiança</span>
+        <h2>Feito para você contratar sem medo.</h2>
+      </div>
+      <div class="lp-features" id="featSlot"></div>
+    </div>
+  </section>
+
+  <!-- ==================== PARA PROFISSIONAIS ==================== -->
+  <section class="lp-section lp-section--alt" id="profissionais">
+    <div class="sg-container lp-split">
+      <div data-reveal>
+        <span class="sg-eyebrow">Para profissionais</span>
+        <h2 style="margin:12px 0 16px">Sua agenda cheia, sem gastar com anúncio.</h2>
+        <p class="sg-lead">Receba solicitações de clientes reais na sua região, envie orçamentos em segundos e construa uma reputação que trabalha por você.</p>
+        <ul class="lp-checklist" id="proListSlot"></ul>
+        <div class="sg-row" style="gap:12px;margin-top:32px">
+          <a class="sg-btn sg-btn--primary sg-btn--lg" href="app.html">Quero receber serviços</a>
+          <a class="sg-btn sg-btn--ghost sg-btn--lg" href="#como-funciona">Entender melhor</a>
+        </div>
+      </div>
+      <div data-reveal data-reveal-delay="120">
+        <div class="sg-card sg-card--pad-lg">
+          <div class="sg-row sg-row--between" style="margin-bottom:22px">
+            <div>
+              <div class="sg-eyebrow">Painel do profissional</div>
+              <div class="sg-display" style="font-size:1.35rem;margin-top:6px">Bom dia, Carlos.</div>
+            </div>
+            <span class="sg-badge sg-badge--success"><span class="sg-dot sg-dot--live"></span>Online</span>
+          </div>
+          <div class="sg-grid sg-grid--2" style="gap:12px">
+            <div class="sg-card sg-card--tight"><div class="sg-metric">
+              <span class="sg-metric__label">Ganhos do mês</span>
+              <span class="sg-metric__value sg-brand-text">R$ 6.480</span></div></div>
+            <div class="sg-card sg-card--tight"><div class="sg-metric">
+              <span class="sg-metric__label">Serviços hoje</span>
+              <span class="sg-metric__value">3</span></div></div>
+            <div class="sg-card sg-card--tight"><div class="sg-metric">
+              <span class="sg-metric__label">Solicitações próximas</span>
+              <span class="sg-metric__value">7</span></div></div>
+            <div class="sg-card sg-card--tight"><div class="sg-metric">
+              <span class="sg-metric__label">Avaliação</span>
+              <span class="sg-metric__value">4,9</span></div></div>
+          </div>
+          <div class="sg-card sg-card--tight sg-card--brand" style="margin-top:12px">
+            <div class="sg-row sg-row--between">
+              <div class="sg-row" style="min-width:0">
+                <span class="sg-avatar" style="font-size:18px">⚡</span>
+                <div style="min-width:0">
+                  <div class="sg-sm sg-strong sg-truncate">Nova solicitação · Instalação elétrica</div>
+                  <div class="sg-xs sg-dim">1,8 km · hoje às 14:30 · estimado R$ 150</div>
+                </div>
+              </div>
+              <span class="sg-btn sg-btn--primary sg-btn--sm">Ver</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== DEPOIMENTOS ==================== -->
+  <section class="lp-section">
+    <div class="sg-container">
+      <div class="lp-section__head lp-section__head--center" data-reveal>
+        <span class="sg-eyebrow">Quem usa</span>
+        <h2>Resolvido no mesmo dia.</h2>
+      </div>
+      <div class="lp-quotes" id="quotesSlot"></div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA FINAL ==================== -->
+  <section class="lp-section" style="padding-top:0">
+    <div class="sg-container">
+      <div class="lp-cta" data-reveal>
+        <span class="sg-eyebrow">ServeGo</span>
+        <h2 style="margin:16px auto 18px">Resolva agora o que está te travando.</h2>
+        <p class="sg-lead" style="max-width:52ch;margin-inline:auto">
+          Sem cadastro complicado, sem taxa para pedir orçamento. Você só paga quando escolher um profissional.
+        </p>
+        <div class="lp-cta__actions">
+          <a class="sg-btn sg-btn--primary sg-btn--lg" href="app.html">Encontrar um profissional</a>
+          <a class="sg-btn sg-btn--outline sg-btn--lg" href="app.html">Sou profissional</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="lp-footer">
+    <div class="sg-container">
+      <div class="lp-footer__grid">
+        <div>
+          <div id="footBrand"></div>
+          <p class="sg-md sg-dim" style="margin-top:16px;max-width:34ch">
+            O profissional que você precisa, quando precisa.
+          </p>
+        </div>
+        <div>
+          <h5>Produto</h5>
+          <ul>
+            <li><a href="#como-funciona">Como funciona</a></li>
+            <li><a href="#categorias">Categorias</a></li>
+            <li><a href="app.html">Entrar</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Profissionais</h5>
+          <ul>
+            <li><a href="app.html">Cadastre-se</a></li>
+            <li><a href="#profissionais">Como funciona</a></li>
+            <li><a href="#confianca">Verificação</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Empresa</h5>
+          <ul>
+            <li><a href="#confianca">Segurança</a></li>
+            <li><a href="#">Termos de uso</a></li>
+            <li><a href="#">Privacidade</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="lp-footer__bottom">
+        <span>© <span id="year"></span> ServeGo. Todos os direitos reservados.</span>
+        <span>Feito com atenção aos detalhes.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/icons.js"></script>
+  <script src="js/theme.js"></script>
+  <script>
+  (function () {
+    var SG = window.SG;
+
+    document.getElementById("brandSlot").innerHTML = SG.brandLogo();
+    document.getElementById("footBrand").innerHTML = SG.brandLogo();
+    document.getElementById("stageCenter").innerHTML = SG.brandMark(40);
+    document.getElementById("icoArrow").innerHTML = SG.icon("arrowRight", 17);
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    /* Botão de tema claro/escuro */
+    if (SG.theme) SG.theme.mount("#themeSlot", "sg-btn sg-btn--ghost sg-btn--sm sg-btn--icon");
+
+    /* Faixa de confiança */
+    var strip = [
+      ["shield", "Profissionais verificados"],
+      ["clock", "Orçamento em minutos"],
+      ["chat", "Chat em tempo real"],
+      ["star", "Avaliações reais"],
+      ["lock", "Pagamento protegido"]
+    ];
+    document.getElementById("stripSlot").innerHTML = strip.map(function (s) {
+      return '<div class="lp-strip__item"><span class="lp-strip__ic">' + SG.icon(s[0], 20) +
+        '</span><span class="sg-md sg-muted sg-strong">' + s[1] + "</span></div>";
+    }).join("");
+
+    /* Categorias */
+    var cats = [
+      ["⚡", "Eletricista", "R$ 90"], ["💧", "Encanador", "R$ 100"], ["🔧", "Mecânico", "R$ 120"],
+      ["🎨", "Pintor", "R$ 150"], ["🧱", "Pedreiro", "R$ 180"], ["❄️", "Ar-condicionado", "R$ 140"],
+      ["🪑", "Montador", "R$ 80"], ["🌳", "Jardinagem", "R$ 90"], ["💻", "Informática", "R$ 80"],
+      ["🧹", "Limpeza", "R$ 120"], ["🪚", "Marceneiro", "R$ 200"], ["🔩", "Serralheiro", "R$ 180"],
+      ["🔑", "Chaveiro", "R$ 70"], ["📺", "Instalação / TV", "R$ 80"]
+    ];
+    document.getElementById("catsSlot").innerHTML = cats.map(function (c) {
+      return '<a class="lp-cat" href="app.html"><span class="lp-cat__ic">' + c[0] + "</span>" +
+        '<span><span class="lp-cat__name" style="display:block">' + c[1] + "</span>" +
+        '<span class="lp-cat__price">a partir de ' + c[2] + "</span></span></a>";
+    }).join("");
+
+    /* Diferenciais */
+    var feats = [
+      ["verified", "Verificação de documentos", "Todo profissional passa por análise de documentos antes de receber o selo Verificado."],
+      ["star", "Reputação que importa", "Nota, número de serviços, taxa de conclusão e avaliações reais de clientes anteriores."],
+      ["lock", "Pagamento protegido", "O valor só é liberado ao profissional depois que você confirma que o serviço foi concluído."],
+      ["chat", "Tudo registrado no chat", "Combinou pelo ServeGo, ficou salvo. Isso protege cliente e profissional em qualquer disputa."],
+      ["zap", "Modo urgência", "Vazamento, curto-circuito, porta trancada: acionamos primeiro quem está de plantão perto de você."],
+      ["shield", "Suporte humano", "Time de atendimento para mediar cancelamentos, retrabalho e casos fora do previsto."]
+    ];
+    document.getElementById("featSlot").innerHTML = feats.map(function (f, i) {
+      return '<div class="lp-feature" data-reveal data-reveal-delay="' + (i * 70) + '">' +
+        '<div class="lp-feature__ic">' + SG.icon(f[0], 20) + "</div>" +
+        "<h4>" + f[1] + "</h4><p>" + f[2] + "</p></div>";
+    }).join("");
+
+    /* Lista para profissionais */
+    var proItems = [
+      "Solicitações de clientes reais, filtradas pela sua especialidade e raio de atendimento",
+      "Orçamento inteligente: sugerimos o valor com maior chance de aceite",
+      "Painel de ganhos com repasses, taxa e histórico completo",
+      "Selos e ranking por qualidade — quem atende bem aparece mais",
+      "Você decide quando fica online. Sem plantão obrigatório."
+    ];
+    document.getElementById("proListSlot").innerHTML = proItems.map(function (t) {
+      return "<li>" + SG.icon("checkCircle", 18) + "<span>" + t + "</span></li>";
+    }).join("");
+
+    /* Depoimentos */
+    var quotes = [
+      ["Pedi às 21h e às 22h30 já estava resolvido. O eletricista chegou com tudo o que precisava.", "Fernanda A.", "São Paulo/SP", 5],
+      ["Recebi quatro orçamentos em menos de dez minutos e escolhi pelo histórico, não pelo palpite.", "Ricardo T.", "Santo André/SP", 5],
+      ["Como profissional, encheu minha agenda. Hoje 70% dos meus serviços vêm do ServeGo.", "Carlos M.", "Eletricista", 5]
+    ];
+    document.getElementById("quotesSlot").innerHTML = quotes.map(function (q, i) {
+      var stars = "";
+      for (var s = 0; s < q[3]; s++) stars += SG.starIcon(true, 15);
+      return '<div class="lp-quote" data-reveal data-reveal-delay="' + (i * 90) + '">' +
+        '<span class="sg-stars">' + stars + "</span>" +
+        "<p>“" + q[0] + "”</p>" +
+        '<div class="sg-row"><span class="sg-avatar sg-avatar--sm">' + q[1].charAt(0) + "</span>" +
+        '<span><span class="sg-sm sg-strong" style="display:block">' + q[1] + "</span>" +
+        '<span class="sg-xs sg-dim">' + q[2] + "</span></span></div></div>";
+    }).join("");
+
+    /* Header fixo com fundo ao rolar */
+    var header = document.getElementById("lpHeader");
+    var onScroll = function () { header.classList.toggle("is-stuck", window.scrollY > 12); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    /* Reveal por scroll */
+    var els = [].slice.call(document.querySelectorAll("[data-reveal]"));
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var delay = parseInt(en.target.getAttribute("data-reveal-delay") || "0", 10);
+          setTimeout(function () { en.target.classList.add("is-visible"); }, delay);
+          io.unobserve(en.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px" });
+      els.forEach(function (e) { io.observe(e); });
+    } else {
+      els.forEach(function (e) { e.classList.add("is-visible"); });
+    }
+
+    /* Rolagem suave nas âncoras */
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = a.getAttribute("href");
+      if (id.length < 2) return;
+      var target = document.querySelector(id);
+      if (!target) return;
+      e.preventDefault();
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 76, behavior: "smooth" });
+    });
+  })();
+  </script>
+</body>
+</html>

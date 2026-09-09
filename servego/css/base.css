@@ -1,0 +1,245 @@
+/* ==========================================================================
+   ServeGo — Base: reset, tipografia e utilitários de layout
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--sg-bg);
+  color: var(--sg-text);
+  font-family: var(--sg-font);
+  font-size: var(--sg-fs-base);
+  line-height: 1.58;
+  letter-spacing: -0.008em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "cv02", "cv03", "cv04", "ss01", "calt";
+  font-optical-sizing: auto;
+  overflow-x: hidden;
+}
+
+/* Grão fino sobre toda a interface — a assinatura tátil do ServeGo.
+   Fica acima do fundo e abaixo de qualquer conteúdo interativo. */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  z-index: var(--sg-z-grain);
+  pointer-events: none;
+  background-image: var(--sg-noise);
+  background-size: 180px 180px;
+  opacity: var(--sg-noise-opacity);
+  mix-blend-mode: var(--sg-noise-blend);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--sg-font-display);
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: var(--sg-track-tight);
+  line-height: 1.1;
+  color: var(--sg-text);
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 5.6vw, var(--sg-fs-5xl));
+  letter-spacing: var(--sg-track-display);
+  line-height: 1.02;
+}
+h2 { font-size: clamp(1.8rem, 3.6vw, var(--sg-fs-3xl)); letter-spacing: -0.038em; }
+h3 { font-size: var(--sg-fs-xl); letter-spacing: -0.028em; }
+h4 { font-size: var(--sg-fs-lg); letter-spacing: -0.024em; }
+
+p { margin: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+button { background: none; border: 0; cursor: pointer; }
+
+img, svg, video { display: block; max-width: 100%; }
+
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--sg-line);
+  margin: var(--sg-6) 0;
+}
+
+::selection { background: var(--sg-brand); color: var(--sg-on-brand); }
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--sg-bg), 0 0 0 4px var(--sg-brand), 0 0 22px -4px var(--sg-brand-glow);
+  border-radius: var(--sg-r-xs);
+}
+
+/* Filete dourado que apaga nas pontas — usado para separar seções nobres */
+.sg-hairline {
+  height: 1px; border: 0; margin: 0;
+  background: var(--sg-gold-line);
+  opacity: 0.75;
+}
+
+/* Scrollbar sutil ---------------------------------------------------------- */
+* { scrollbar-width: thin; scrollbar-color: var(--sg-line-strong) transparent; }
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: var(--sg-line-strong);
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: var(--sg-r-full);
+}
+*::-webkit-scrollbar-thumb:hover { background: var(--sg-text-4); background-clip: content-box; }
+
+/* Tipografia utilitária ---------------------------------------------------- */
+.sg-display { font-family: var(--sg-font-display); letter-spacing: -0.04em; font-weight: 800; }
+.sg-eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: var(--sg-fs-2xs);
+  font-weight: 600;
+  letter-spacing: var(--sg-track-eyebrow);
+  text-transform: uppercase;
+  color: var(--sg-text-3);
+}
+/* pequeno traço dourado antes do rótulo — detalhe de acabamento */
+.sg-eyebrow::before {
+  content: ""; width: 18px; height: 1px; flex: none;
+  background: linear-gradient(90deg, transparent, var(--sg-brand-ink));
+}
+.sg-eyebrow--plain::before { display: none; }
+.sg-lead { font-size: var(--sg-fs-lg); color: var(--sg-text-2); line-height: 1.65; }
+.sg-muted { color: var(--sg-text-2); }
+.sg-dim { color: var(--sg-text-3); }
+.sg-faint { color: var(--sg-text-4); }
+.sg-xs { font-size: var(--sg-fs-xs); }
+.sg-sm { font-size: var(--sg-fs-sm); }
+.sg-md { font-size: var(--sg-fs-md); }
+.sg-strong { font-weight: 600; }
+.sg-bold { font-weight: 700; }
+.sg-brand-text { color: var(--sg-brand-ink); }
+.sg-numeric { font-variant-numeric: tabular-nums; }
+.sg-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sg-clamp-2 {
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  line-clamp: 2; overflow: hidden;
+}
+.sg-clamp-3 {
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  line-clamp: 3; overflow: hidden;
+}
+
+/* Gradiente de texto da marca (usar com muita parcimônia) ------------------- */
+.sg-gradient-text {
+  background: var(--sg-gold-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Ouro escovado: para números e valores em destaque */
+.sg-gold-metal {
+  background: var(--sg-gold-ink);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Layout ------------------------------------------------------------------- */
+.sg-container {
+  width: 100%;
+  max-width: var(--sg-container);
+  margin-inline: auto;
+  padding-inline: var(--sg-6);
+}
+.sg-container--wide { max-width: var(--sg-container-wide); }
+
+.sg-row { display: flex; align-items: center; gap: var(--sg-3); }
+.sg-row--between { justify-content: space-between; }
+.sg-row--wrap { flex-wrap: wrap; }
+.sg-row--top { align-items: flex-start; }
+.sg-col { display: flex; flex-direction: column; }
+.sg-spacer { flex: 1 1 auto; }
+
+.sg-grid { display: grid; gap: var(--sg-4); }
+.sg-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sg-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sg-grid--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.sg-grid--auto { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+
+.sg-stack > * + * { margin-top: var(--sg-4); }
+.sg-stack-sm > * + * { margin-top: var(--sg-2); }
+.sg-stack-lg > * + * { margin-top: var(--sg-6); }
+
+.sg-hide { display: none !important; }
+.sg-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+@media (max-width: 900px) {
+  .sg-grid--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sg-grid--3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sg-hide-md { display: none !important; }
+}
+@media (max-width: 640px) {
+  .sg-container { padding-inline: var(--sg-4); }
+  .sg-grid--2, .sg-grid--3, .sg-grid--4 { grid-template-columns: minmax(0, 1fr); }
+  .sg-hide-sm { display: none !important; }
+}
+@media (min-width: 901px) {
+  .sg-only-md { display: none !important; }
+}
+
+/* Animações de entrada ----------------------------------------------------- */
+@keyframes sg-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes sg-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes sg-scale-in {
+  from { opacity: 0; transform: scale(0.97) translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes sg-shimmer {
+  100% { transform: translateX(100%); }
+}
+@keyframes sg-spin { to { transform: rotate(360deg); } }
+@keyframes sg-pulse-ring {
+  0% { transform: scale(0.75); opacity: 0.7; }
+  70% { transform: scale(1.9); opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes sg-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.sg-anim { animation: sg-fade-up var(--sg-t-slow) var(--sg-ease-out) both; }
+.sg-anim-1 { animation-delay: 60ms; }
+.sg-anim-2 { animation-delay: 120ms; }
+.sg-anim-3 { animation-delay: 180ms; }
+.sg-anim-4 { animation-delay: 240ms; }
+.sg-anim-5 { animation-delay: 300ms; }
+
+/* Reveal por scroll (js/ui.js) --------------------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 700ms var(--sg-ease-out), transform 700ms var(--sg-ease-out);
+  will-change: opacity, transform;
+}
+[data-reveal].is-visible { opacity: 1; transform: none; }
