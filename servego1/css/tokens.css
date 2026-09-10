@@ -1,0 +1,405 @@
+/* ==========================================================================
+   ServeGo — Design Tokens · Ultra-Premium · Tema claro e escuro
+   --------------------------------------------------------------------------
+   Como funciona o tema:
+     :root                          → tema ESCURO (padrão da marca)
+     :root[data-theme="light"]      → tema CLARO escolhido pelo usuário
+     @media (prefers-color-scheme)  → segue o sistema quando não há escolha
+
+   Nenhum valor cru de cor, sombra ou material deve ser escrito fora daqui.
+   Os "materiais" (glaze, hover, well, sheen, inset, scrim) existem para que
+   vidro, luz e profundidade se invertam corretamente entre os dois temas.
+   ========================================================================== */
+
+:root {
+  /* =====================================================================
+     TEMA ESCURO — preto quente, ouro metálico, vidro
+     ===================================================================== */
+
+  /* ---- Superfícies -------------------------------------------------- */
+  --sg-bg: #070706;
+  --sg-bg-soft: #0b0a09;
+  --sg-surface: #100f0e;
+  --sg-surface-2: #171513;
+  --sg-surface-3: #201d1a;
+  --sg-elevated: #2a2622;
+
+  /* ---- Vidro (com backdrop-filter) ---------------------------------- */
+  --sg-glass: rgba(24, 21, 19, 0.62);
+  --sg-glass-strong: rgba(16, 15, 14, 0.86);
+  --sg-glass-header: rgba(9, 8, 7, 0.72);
+  --sg-glass-blur: blur(22px) saturate(150%);
+
+  /* ---- Linhas ------------------------------------------------------- */
+  --sg-line: rgba(255, 240, 220, 0.075);
+  --sg-line-soft: rgba(255, 240, 220, 0.045);
+  --sg-line-strong: rgba(255, 240, 220, 0.145);
+  --sg-line-gold: rgba(255, 192, 31, 0.26);
+  --sg-grid: rgba(255, 240, 220, 0.045);
+
+  /* ---- Materiais ----------------------------------------------------
+     glaze  = verniz de luz no topo das superfícies
+     hover  = tinta de interação
+     well   = fundo rebaixado (campos, segmentos, cabeçalho de tabela)
+     sheen  = filete de luz de 1px (box-shadow inset)
+     inset  = profundidade interna dos campos
+     scrim  = véu atrás de modais                                        */
+  --sg-glaze: rgba(255, 245, 230, 0.045);
+  --sg-glaze-soft: rgba(255, 245, 230, 0.028);
+  --sg-glaze-strong: rgba(255, 245, 230, 0.075);
+  --sg-hover: rgba(255, 245, 230, 0.045);
+  --sg-hover-strong: rgba(255, 245, 230, 0.075);
+  --sg-well: rgba(0, 0, 0, 0.28);
+  --sg-well-strong: rgba(0, 0, 0, 0.4);
+  --sg-sheen: inset 0 1px 0 rgba(255, 245, 225, 0.07);
+  --sg-sheen-strong: inset 0 1px 0 rgba(255, 245, 225, 0.14);
+  --sg-inset: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+  --sg-inset-strong: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  --sg-scrim: rgba(3, 3, 2, 0.74);
+  --sg-shade: rgba(0, 0, 0, 0.6);
+  --sg-shade-strong: rgba(0, 0, 0, 0.9);
+
+  /* ---- Texto -------------------------------------------------------- */
+  --sg-text: #f7f4f0;
+  --sg-text-2: #bab3ab;
+  --sg-text-3: #857d76;
+  --sg-text-4: #5b544e;
+  --sg-on-brand: #180f00;
+
+  /* ---- Ouro --------------------------------------------------------- */
+  --sg-gold-100: #ffefc0;
+  --sg-gold-200: #ffdc82;
+  --sg-gold-300: #ffc93f;
+  --sg-brand: #ffc01f;
+  --sg-brand-2: #eaa30c;
+  --sg-brand-3: #b87c05;
+  --sg-brand-deep: #7d5202;
+  /* cor do ouro quando vira TEXTO ou ícone (precisa de contraste) */
+  --sg-brand-ink: #ffc01f;
+  --sg-brand-ink-2: #ffdc82;
+
+  --sg-brand-soft: rgba(255, 192, 31, 0.11);
+  --sg-brand-softer: rgba(255, 192, 31, 0.055);
+  --sg-brand-line: var(--sg-line-gold);
+  --sg-brand-glow: rgba(255, 168, 10, 0.3);
+  --sg-brand-halo: rgba(255, 168, 10, 0.14);
+
+  /* Gradientes metálicos */
+  --sg-gold-metal: linear-gradient(140deg,
+      var(--sg-gold-100) 0%, var(--sg-brand) 34%, var(--sg-brand-2) 58%,
+      var(--sg-gold-200) 86%, var(--sg-brand-2) 100%);
+  /* versão para texto recortado (background-clip: text) */
+  --sg-gold-ink: var(--sg-gold-metal);
+  --sg-gold-line: linear-gradient(90deg,
+      transparent 0%, var(--sg-brand-line) 22%, rgba(255, 223, 140, 0.5) 50%,
+      var(--sg-brand-line) 78%, transparent 100%);
+  --sg-gold-text: linear-gradient(96deg, #fffaf0 4%, var(--sg-gold-200) 40%,
+      var(--sg-brand) 66%, var(--sg-gold-100) 100%);
+
+  /* ---- Semânticas --------------------------------------------------- */
+  --sg-success: #4cd6a0;
+  --sg-success-soft: rgba(76, 214, 160, 0.11);
+  --sg-success-line: rgba(76, 214, 160, 0.26);
+  --sg-danger: #ff6f63;
+  --sg-danger-soft: rgba(255, 111, 99, 0.11);
+  --sg-danger-line: rgba(255, 111, 99, 0.26);
+  --sg-info: #7fb0ff;
+  --sg-info-soft: rgba(127, 176, 255, 0.11);
+  --sg-info-line: rgba(127, 176, 255, 0.26);
+  --sg-warn: #ffb020;
+  --sg-warn-soft: rgba(255, 176, 32, 0.11);
+  --sg-warn-line: rgba(255, 176, 32, 0.26);
+
+  /* ---- Sombras em camadas ------------------------------------------- */
+  --sg-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --sg-shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4), 0 8px 20px -8px rgba(0, 0, 0, 0.6);
+  --sg-shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.35), 0 22px 56px -22px rgba(0, 0, 0, 0.85);
+  --sg-shadow-xl: 0 10px 24px rgba(0, 0, 0, 0.42), 0 50px 110px -40px rgba(0, 0, 0, 0.95);
+  --sg-shadow-brand: 0 2px 8px rgba(184, 124, 5, 0.28), 0 16px 40px -14px var(--sg-brand-glow);
+  --sg-shadow-brand-lg: 0 4px 12px rgba(184, 124, 5, 0.34), 0 26px 62px -18px var(--sg-brand-glow);
+
+  /* ---- Ambiente (auras de fundo) ------------------------------------ */
+  --sg-aura-gold: rgba(255, 168, 10, 0.14);
+  --sg-aura-gold-soft: rgba(255, 168, 10, 0.07);
+  --sg-aura-light: rgba(255, 245, 230, 0.045);
+  --sg-stage-top: #14120f;
+  --sg-stage-bottom: #070605;
+
+  /* ---- Textura ------------------------------------------------------ */
+  --sg-noise-opacity: 0.035;
+  --sg-noise-blend: overlay;
+  --sg-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+
+  color-scheme: dark;
+
+  /* =====================================================================
+     ESCALAS INVARIANTES (não mudam com o tema)
+     ===================================================================== */
+
+  /* ---- Tipografia ---------------------------------------------------- */
+  --sg-font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --sg-font-display: "Manrope", var(--sg-font);
+  --sg-fs-2xs: 0.6875rem;
+  --sg-fs-xs: 0.75rem;
+  --sg-fs-sm: 0.8125rem;
+  --sg-fs-md: 0.875rem;
+  --sg-fs-base: 0.9375rem;
+  --sg-fs-lg: 1.0625rem;
+  --sg-fs-xl: 1.3125rem;
+  --sg-fs-2xl: 1.75rem;
+  --sg-fs-3xl: 2.25rem;
+  --sg-fs-4xl: 3rem;
+  --sg-fs-5xl: 4.25rem;
+  --sg-track-tight: -0.032em;
+  --sg-track-display: -0.045em;
+  --sg-track-eyebrow: 0.2em;
+
+  /* ---- Espaçamento --------------------------------------------------- */
+  --sg-1: 4px;  --sg-2: 8px;  --sg-3: 12px; --sg-4: 16px; --sg-5: 20px;
+  --sg-6: 24px; --sg-8: 32px; --sg-10: 40px; --sg-12: 48px; --sg-16: 64px;
+  --sg-20: 80px; --sg-24: 96px; --sg-32: 128px;
+
+  /* ---- Raios --------------------------------------------------------- */
+  --sg-r-xs: 7px; --sg-r-sm: 10px; --sg-r-md: 14px; --sg-r-lg: 18px;
+  --sg-r-xl: 26px; --sg-r-2xl: 34px; --sg-r-full: 999px;
+
+  /* ---- Movimento ----------------------------------------------------- */
+  --sg-ease: cubic-bezier(0.32, 0.72, 0.26, 1);
+  --sg-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --sg-ease-spring: cubic-bezier(0.34, 1.42, 0.5, 1);
+  --sg-t-fast: 140ms;
+  --sg-t: 260ms;
+  --sg-t-slow: 480ms;
+  --sg-t-lux: 760ms;
+
+  /* ---- Layout -------------------------------------------------------- */
+  --sg-container: 1220px;
+  --sg-container-wide: 1440px;
+  --sg-header-h: 68px;
+  --sg-sidebar-w: 256px;
+  --sg-bottomnav-h: 64px;
+  --sg-z-grain: 1;
+  --sg-z-header: 60;
+  --sg-z-sidebar: 55;
+  --sg-z-sheet: 80;
+  --sg-z-modal: 90;
+  --sg-z-toast: 100;
+}
+
+/* ==========================================================================
+   TEMA CLARO — marfim quente, bronze e papel
+   Aplicado quando o usuário escolhe "claro" OU quando o sistema pede claro
+   e o usuário ainda não escolheu nada.
+   ========================================================================== */
+:root[data-theme="light"] {
+  /* ---- Superfícies -------------------------------------------------- */
+  --sg-bg: #f7f4ef;
+  --sg-bg-soft: #f1ede6;
+  --sg-surface: #ffffff;
+  --sg-surface-2: #faf8f4;
+  --sg-surface-3: #f2eee7;
+  --sg-elevated: #ffffff;
+
+  /* ---- Vidro -------------------------------------------------------- */
+  --sg-glass: rgba(255, 253, 250, 0.72);
+  --sg-glass-strong: rgba(255, 254, 252, 0.9);
+  --sg-glass-header: rgba(250, 247, 242, 0.78);
+
+  /* ---- Linhas ------------------------------------------------------- */
+  --sg-line: rgba(40, 28, 10, 0.1);
+  --sg-line-soft: rgba(40, 28, 10, 0.06);
+  --sg-line-strong: rgba(40, 28, 10, 0.19);
+  --sg-line-gold: rgba(184, 124, 5, 0.42);
+  --sg-grid: rgba(40, 28, 10, 0.055);
+
+  /* ---- Materiais (invertem a lógica da luz) ------------------------- */
+  --sg-glaze: rgba(255, 255, 255, 0.85);
+  --sg-glaze-soft: rgba(255, 255, 255, 0.55);
+  --sg-glaze-strong: rgba(255, 255, 255, 1);
+  --sg-hover: rgba(40, 28, 10, 0.045);
+  --sg-hover-strong: rgba(40, 28, 10, 0.075);
+  --sg-well: rgba(40, 28, 10, 0.04);
+  --sg-well-strong: rgba(40, 28, 10, 0.065);
+  --sg-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --sg-sheen-strong: inset 0 1px 0 rgba(255, 255, 255, 1);
+  --sg-inset: inset 0 1px 2px rgba(40, 28, 10, 0.07);
+  --sg-inset-strong: inset 0 1px 3px rgba(40, 28, 10, 0.1);
+  --sg-scrim: rgba(38, 30, 18, 0.4);
+  --sg-shade: rgba(40, 28, 10, 0.18);
+  --sg-shade-strong: rgba(40, 28, 10, 0.32);
+
+  /* ---- Texto -------------------------------------------------------- */
+  --sg-text: #17130e;
+  --sg-text-2: #574f46;
+  --sg-text-3: #837a70;
+  --sg-text-4: #a79e94;
+  --sg-on-brand: #1a1200;
+
+  /* ---- Ouro: o metal continua ouro, mas o "ouro texto" vira bronze --- */
+  --sg-brand: #f0ae0a;
+  --sg-brand-2: #d1900a;
+  --sg-brand-3: #a06a04;
+  --sg-brand-deep: #6d4802;
+  --sg-brand-ink: #8a5c00;
+  --sg-brand-ink-2: #6d4802;
+
+  --sg-brand-soft: rgba(240, 174, 10, 0.14);
+  --sg-brand-softer: rgba(240, 174, 10, 0.075);
+  --sg-brand-glow: rgba(184, 124, 5, 0.34);
+  --sg-brand-halo: rgba(240, 174, 10, 0.16);
+
+  --sg-gold-metal: linear-gradient(140deg,
+      #ffe08a 0%, #ffc32b 32%, #e5a10c 58%, #ffd76e 84%, #d1900a 100%);
+  --sg-gold-ink: linear-gradient(140deg, #a97418 0%, #8a5c00 46%, #b8860b 100%);
+  --sg-gold-line: linear-gradient(90deg,
+      transparent 0%, rgba(184, 124, 5, 0.32) 22%, rgba(184, 124, 5, 0.6) 50%,
+      rgba(184, 124, 5, 0.32) 78%, transparent 100%);
+  --sg-gold-text: linear-gradient(96deg, #3d2a05 4%, #8a5c00 42%,
+      #b8860b 70%, #a97418 100%);
+
+  /* ---- Semânticas (tons que funcionam sobre papel) ------------------ */
+  --sg-success: #0f8a5c;
+  --sg-success-soft: rgba(15, 138, 92, 0.1);
+  --sg-success-line: rgba(15, 138, 92, 0.28);
+  --sg-danger: #c33227;
+  --sg-danger-soft: rgba(195, 50, 39, 0.09);
+  --sg-danger-line: rgba(195, 50, 39, 0.26);
+  --sg-info: #2260c4;
+  --sg-info-soft: rgba(34, 96, 196, 0.09);
+  --sg-info-line: rgba(34, 96, 196, 0.24);
+  --sg-warn: #96650a;
+  --sg-warn-soft: rgba(150, 101, 10, 0.1);
+  --sg-warn-line: rgba(150, 101, 10, 0.26);
+
+  /* ---- Sombras: suaves, quentes, nunca pretas ----------------------- */
+  --sg-shadow-sm: 0 1px 2px rgba(40, 28, 10, 0.06);
+  --sg-shadow-md: 0 1px 2px rgba(40, 28, 10, 0.05), 0 6px 18px -8px rgba(40, 28, 10, 0.14);
+  --sg-shadow-lg: 0 2px 6px rgba(40, 28, 10, 0.06), 0 18px 44px -20px rgba(40, 28, 10, 0.24);
+  --sg-shadow-xl: 0 6px 16px rgba(40, 28, 10, 0.08), 0 40px 90px -36px rgba(40, 28, 10, 0.3);
+  --sg-shadow-brand: 0 2px 8px rgba(184, 124, 5, 0.22), 0 14px 34px -14px rgba(184, 124, 5, 0.35);
+  --sg-shadow-brand-lg: 0 4px 12px rgba(184, 124, 5, 0.26), 0 22px 54px -18px rgba(184, 124, 5, 0.4);
+
+  /* ---- Ambiente ----------------------------------------------------- */
+  --sg-aura-gold: rgba(240, 174, 10, 0.16);
+  --sg-aura-gold-soft: rgba(240, 174, 10, 0.09);
+  --sg-aura-light: rgba(255, 255, 255, 0.9);
+  --sg-stage-top: #ffffff;
+  --sg-stage-bottom: #f2ede4;
+
+  /* ---- Textura: grão multiplicado, bem mais discreto ---------------- */
+  --sg-noise-opacity: 0.02;
+  --sg-noise-blend: multiply;
+
+  color-scheme: light;
+}
+
+/* Sem escolha explícita, segue o sistema ---------------------------------- */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]):not([data-theme="light"]) {
+    --sg-bg: #f7f4ef;
+    --sg-bg-soft: #f1ede6;
+    --sg-surface: #ffffff;
+    --sg-surface-2: #faf8f4;
+    --sg-surface-3: #f2eee7;
+    --sg-elevated: #ffffff;
+
+    --sg-glass: rgba(255, 253, 250, 0.72);
+    --sg-glass-strong: rgba(255, 254, 252, 0.9);
+    --sg-glass-header: rgba(250, 247, 242, 0.78);
+
+    --sg-line: rgba(40, 28, 10, 0.1);
+    --sg-line-soft: rgba(40, 28, 10, 0.06);
+    --sg-line-strong: rgba(40, 28, 10, 0.19);
+    --sg-line-gold: rgba(184, 124, 5, 0.42);
+    --sg-grid: rgba(40, 28, 10, 0.055);
+
+    --sg-glaze: rgba(255, 255, 255, 0.85);
+    --sg-glaze-soft: rgba(255, 255, 255, 0.55);
+    --sg-glaze-strong: rgba(255, 255, 255, 1);
+    --sg-hover: rgba(40, 28, 10, 0.045);
+    --sg-hover-strong: rgba(40, 28, 10, 0.075);
+    --sg-well: rgba(40, 28, 10, 0.04);
+    --sg-well-strong: rgba(40, 28, 10, 0.065);
+    --sg-sheen: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    --sg-sheen-strong: inset 0 1px 0 rgba(255, 255, 255, 1);
+    --sg-inset: inset 0 1px 2px rgba(40, 28, 10, 0.07);
+    --sg-inset-strong: inset 0 1px 3px rgba(40, 28, 10, 0.1);
+    --sg-scrim: rgba(38, 30, 18, 0.4);
+    --sg-shade: rgba(40, 28, 10, 0.18);
+    --sg-shade-strong: rgba(40, 28, 10, 0.32);
+
+    --sg-text: #17130e;
+    --sg-text-2: #574f46;
+    --sg-text-3: #837a70;
+    --sg-text-4: #a79e94;
+    --sg-on-brand: #1a1200;
+
+    --sg-brand: #f0ae0a;
+    --sg-brand-2: #d1900a;
+    --sg-brand-3: #a06a04;
+    --sg-brand-deep: #6d4802;
+    --sg-brand-ink: #8a5c00;
+    --sg-brand-ink-2: #6d4802;
+    --sg-brand-soft: rgba(240, 174, 10, 0.14);
+    --sg-brand-softer: rgba(240, 174, 10, 0.075);
+    --sg-brand-glow: rgba(184, 124, 5, 0.34);
+    --sg-brand-halo: rgba(240, 174, 10, 0.16);
+
+    --sg-gold-metal: linear-gradient(140deg,
+        #ffe08a 0%, #ffc32b 32%, #e5a10c 58%, #ffd76e 84%, #d1900a 100%);
+    --sg-gold-ink: linear-gradient(140deg, #a97418 0%, #8a5c00 46%, #b8860b 100%);
+    --sg-gold-line: linear-gradient(90deg,
+        transparent 0%, rgba(184, 124, 5, 0.32) 22%, rgba(184, 124, 5, 0.6) 50%,
+        rgba(184, 124, 5, 0.32) 78%, transparent 100%);
+    --sg-gold-text: linear-gradient(96deg, #3d2a05 4%, #8a5c00 42%,
+        #b8860b 70%, #a97418 100%);
+
+    --sg-success: #0f8a5c;
+    --sg-success-soft: rgba(15, 138, 92, 0.1);
+    --sg-success-line: rgba(15, 138, 92, 0.28);
+    --sg-danger: #c33227;
+    --sg-danger-soft: rgba(195, 50, 39, 0.09);
+    --sg-danger-line: rgba(195, 50, 39, 0.26);
+    --sg-info: #2260c4;
+    --sg-info-soft: rgba(34, 96, 196, 0.09);
+    --sg-info-line: rgba(34, 96, 196, 0.24);
+    --sg-warn: #96650a;
+    --sg-warn-soft: rgba(150, 101, 10, 0.1);
+    --sg-warn-line: rgba(150, 101, 10, 0.26);
+
+    --sg-shadow-sm: 0 1px 2px rgba(40, 28, 10, 0.06);
+    --sg-shadow-md: 0 1px 2px rgba(40, 28, 10, 0.05), 0 6px 18px -8px rgba(40, 28, 10, 0.14);
+    --sg-shadow-lg: 0 2px 6px rgba(40, 28, 10, 0.06), 0 18px 44px -20px rgba(40, 28, 10, 0.24);
+    --sg-shadow-xl: 0 6px 16px rgba(40, 28, 10, 0.08), 0 40px 90px -36px rgba(40, 28, 10, 0.3);
+    --sg-shadow-brand: 0 2px 8px rgba(184, 124, 5, 0.22), 0 14px 34px -14px rgba(184, 124, 5, 0.35);
+    --sg-shadow-brand-lg: 0 4px 12px rgba(184, 124, 5, 0.26), 0 22px 54px -18px rgba(184, 124, 5, 0.4);
+
+    --sg-aura-gold: rgba(240, 174, 10, 0.16);
+    --sg-aura-gold-soft: rgba(240, 174, 10, 0.09);
+    --sg-aura-light: rgba(255, 255, 255, 0.9);
+    --sg-stage-top: #ffffff;
+    --sg-stage-bottom: #f2ede4;
+
+    --sg-noise-opacity: 0.02;
+    --sg-noise-blend: multiply;
+
+    color-scheme: light;
+  }
+}
+
+/* A troca de tema é suave, mas sem animar o mundo inteiro ------------------ */
+:root.sg-theme-animating,
+:root.sg-theme-animating body {
+  transition: background-color var(--sg-t-slow) var(--sg-ease),
+              color var(--sg-t-slow) var(--sg-ease);
+}
+
+/* Respeita quem prefere menos movimento ----------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
